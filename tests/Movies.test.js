@@ -1,9 +1,16 @@
 const request = require('supertest')
-const app = require('../app')
 const models = require('../models')
 const moviesForTest = require('./movies.json')
 
-describe('Sample Test', () => {
+describe('Movies Test', () => {
+  beforeEach(() => {        
+      app = require('../app')
+  });
+
+  afterEach(async () => {
+      await app.close();
+  });
+
 
   it('clean up database', done => {
     models.db.movie.remove({}, (err, result) => {
@@ -58,5 +65,5 @@ describe('Sample Test', () => {
       expect(res.body._id).toEqual(id.toString())
       done()
     })    
-  })
+  }) 
 })
