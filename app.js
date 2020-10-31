@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', controllers.home.index);
 app.get('/movies/:location/:language', controllers.movies.filter);
 
+app.post('/users/create', controllers.users.create);
+
+
 const port = process.env.PORT || 5000;
 var server = app.listen(port);
 
