@@ -20,6 +20,9 @@ app.get('/movies/location/:location/language/:language', controllers.movies.filt
 app.get('/movies/id/:id', controllers.movies.get);
 
 
+app.post('/users/create', controllers.users.create);
+
+
 const port = process.env.PORT || 5000;
 var server = app.listen(port);
 
