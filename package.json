@@ -4,7 +4,7 @@
   "description": "an app for search and book a movie",
   "main": "app.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --maxWorkers=1",
     "start": "nodemon app.js"
   },
   "repository": {
