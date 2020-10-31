@@ -1,0 +1,24 @@
+{
+  "name": "movie-store",
+  "version": "1.0.0",
+  "description": "an app for search and book a movie",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soniajah/Movies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/soniajah/Movies#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11",
+    "nodemon": "^2.0.6"
+  }
+}
