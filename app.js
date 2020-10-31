@@ -16,7 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', controllers.home.index);
-app.get('/movies/:location/:language', controllers.movies.filter);
+app.get('/movies/location/:location/language/:language', controllers.movies.filter);
+app.get('/movies/id/:id', controllers.movies.get);
+
 
 const port = process.env.PORT || 5000;
 var server = app.listen(port);
