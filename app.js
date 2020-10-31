@@ -16,9 +16,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', controllers.home.index);
-
+app.get('/movies/:location/:language', controllers.movies.filter);
 
 const port = process.env.PORT || 5000;
-app.listen(port);
+var server = app.listen(port);
 
 console.log('App is listening on port ' + port);
+
+module.exports = server
