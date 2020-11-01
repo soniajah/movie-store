@@ -12,8 +12,14 @@ exports.create = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  console.log(req.body) 
   models.db.booking.deleteOne({_id: req.body.bookingId}, (err, result) => {
+    if(err) console.log(err)
+    res.send(result)
+  }) 
+}
+
+exports.search = (req, res) => {
+  models.db.booking.findOne({movieId: req.params.movieid, userId: req.params.userid}, (err, result) => {
     if(err) console.log(err)
     res.send(result)
   }) 

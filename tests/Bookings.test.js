@@ -49,6 +49,16 @@ describe('Bookings Test', () => {
     })
   })
 
+  it('check if a movie is booked by a user', (done) => {  
+    models.db.booking.find({}).then(async (booking, err) => {     
+      const res = await request(app).get(`/booking/movieid/${booking[0].movieId}/userid/${booking[0].userId}`)
+      .send()
+      expect(res.body.movieId).toBe(booking[0].movieId.toString());
+      expect(res.body.userId).toBe(booking[0].userId.toString());
+      done()
+      })    
+  })
+
   it('deletes a booking of a movie made by a user', (done) => {  
     models.db.booking.find({}).then( async (booking, err) => {
       const res = await request(app).post('/booking/delete/')
