@@ -24,6 +24,8 @@ app.post('/users/create', controllers.users.create);
 
 app.post('/booking/create', controllers.bookings.create);
 app.post('/booking/delete', controllers.bookings.delete);
+app.get('/booking/movieid/:movieid/userid/:userid', controllers.bookings.search);
+
 
 
 
