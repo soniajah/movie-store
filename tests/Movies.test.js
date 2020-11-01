@@ -1,15 +1,21 @@
 const request = require('supertest')
-const models = require('../models')
 const moviesForTest = require('./movies.json')
 
 describe('Movies Test', () => {
+  beforeAll(() => {
+    models = require('../models')
+  })
   beforeEach(() => {        
-      app = require('../app')
+    app = require('../app')
   });
 
   afterEach(async () => {
       await app.close();
   });
+
+  afterAll(() => {
+    models.db.disconnect()
+  })
 
 
   it('clean up database', done => {

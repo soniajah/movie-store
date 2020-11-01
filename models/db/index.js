@@ -4,3 +4,8 @@ mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: t
 
 exports.movie = require('./movie').Movie
 exports.user = require('./user').User
+exports.booking = require('./booking').booking
+
+exports.disconnect = function() {
+  mongoose.disconnect()
+}
