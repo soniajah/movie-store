@@ -23,3 +23,13 @@ exports.get = (req, res) => {
     res.send(result)
   })  
 }
+
+exports.locations = (req, res) => {
+  models.db.movie.find({})
+  .then((result, err) => {
+    if(err) console.log(err)
+    var allLocations = result.map(movie => movie.location)
+    var uniqueLocations = allLocations.filter((value, index, self) => self.indexOf(value) === index)
+    res.send(uniqueLocations)
+  })  
+}

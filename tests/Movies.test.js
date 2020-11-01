@@ -72,4 +72,14 @@ describe('Movies Test', () => {
       done()
     })    
   }) 
+
+  it('get all unique locations from movies', async (done) => {
+    const res = await request(app)
+    .get('/movies/locations')
+    .send()
+    console.log(res.body)
+    expect(res.statusCode).toEqual(200)
+    done();
+  })
+
 })
