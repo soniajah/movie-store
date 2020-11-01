@@ -77,8 +77,15 @@ describe('Movies Test', () => {
     const res = await request(app)
     .get('/movies/locations')
     .send()
-    console.log(res.body)
-    expect(res.statusCode).toEqual(200)
+    expect(res.body).toEqual([ 'USA', 'DENMARK' ])
+    done();
+  })
+
+  it('get all unique languages from movies', async (done) => {
+    const res = await request(app)
+    .get('/movies/languages')
+    .send()
+    expect(res.body).toEqual([ 'ENGLISH', 'DANISH', 'SPANISH' ])
     done();
   })
 
