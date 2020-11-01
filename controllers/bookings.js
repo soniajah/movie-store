@@ -10,3 +10,11 @@ exports.create = (req, res) => {
     res.send(result)
   });  
 }
+
+exports.delete = (req, res) => {
+  console.log(req.body) 
+  models.db.booking.deleteOne({_id: req.body.bookingId}, (err, result) => {
+    if(err) console.log(err)
+    res.send(result)
+  }) 
+}

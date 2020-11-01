@@ -23,6 +23,8 @@ app.get('/movies/id/:id', controllers.movies.get);
 app.post('/users/create', controllers.users.create);
 
 app.post('/booking/create', controllers.bookings.create);
+app.post('/booking/delete', controllers.bookings.delete);
+
 
 
 const port = process.env.PORT || 5000;
