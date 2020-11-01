@@ -33,3 +33,13 @@ exports.locations = (req, res) => {
     res.send(uniqueLocations)
   })  
 }
+
+exports.languages = (req, res) => {
+  models.db.movie.find({})
+  .then((result, err) => {
+    if(err) console.log(err)
+    var allLanguages = result.map(movie => movie.language)
+    var uniqueLanguages = allLanguages.filter((value, index, self) => self.indexOf(value) === index)
+    res.send(uniqueLanguages)
+  })  
+}
