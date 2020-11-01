@@ -10,6 +10,7 @@ describe('Bookings Test', () => {
     models.db.user.remove({}, (err, result) => {
       createUser({name: "user-test"})
     })  
+    models.db.booking.remove({}, (err, result) => {})
     done();
   })
 
@@ -45,6 +46,15 @@ describe('Bookings Test', () => {
           done()
         })
       })
+    })
+  })
+
+  it('deletes a booking of a movie made by a user', (done) => {  
+    models.db.booking.find({}).then( async (booking, err) => {
+      const res = await request(app).post('/booking/delete/')
+      .send({bookingId: booking[0]._id})      
+      expect(res.body.deletedCount).toBe(1);
+      done()
     })
   })
 })
