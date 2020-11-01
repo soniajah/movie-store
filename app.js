@@ -16,10 +16,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', controllers.home.index);
+
 app.get('/movies/location/:location/language/:language', controllers.movies.filter);
 app.get('/movies/id/:id', controllers.movies.get);
 
 app.post('/users/create', controllers.users.create);
+
+app.post('/booking/create', controllers.bookings.create);
 
 
 const port = process.env.PORT || 5000;

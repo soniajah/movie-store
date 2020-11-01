@@ -1,7 +1,9 @@
 const request = require('supertest')
-const models = require('../models')
 
 describe('Users Test', () => {
+  beforeAll(() => {
+    models = require('../models')
+  })
   beforeEach(() => {        
     app = require('../app')
   });
@@ -9,6 +11,10 @@ describe('Users Test', () => {
   afterEach(async () => {
       await app.close();
   });
+
+  afterAll(() => {
+    models.db.disconnect()
+  })
 
   it('clean up database', done => {
     models.db.user.remove({}, (err, result) => {
