@@ -19,6 +19,8 @@ app.get('/', controllers.home.index);
 
 app.get('/movies/location/:location/language/:language', controllers.movies.filter);
 app.get('/movies/id/:id', controllers.movies.get);
+app.get('/movies/locations', controllers.movies.locations);
+
 
 app.post('/users/create', controllers.users.create);
 
