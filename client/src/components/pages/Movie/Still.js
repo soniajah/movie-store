@@ -8,11 +8,11 @@ function Still({movie}) {
         <Carousel className='still-image'>
           {movie.stills.map((value, index) => {
             return (
-              <Carousel.Item key={index}>
+              <Carousel.Item>
                 <img
                   className="d-block still-image"
                   src={value}
-                  alt="First slide"
+                  key={index}
                 />            
               </Carousel.Item>
             )

@@ -32,7 +32,22 @@
   width: 200px;
   height: 300px;
 }
+
 .poster {
   max-width: 400px;
   max-height: 500px;
+}
+
+.non-clickable {
+  pointer-events:none;
+}
+
+.booking-button {
+  background-color: white;
+  border: 0px;
+}
+
+.booking-button:focus {
+  background-color: white;
+  border: 0px;
 }
