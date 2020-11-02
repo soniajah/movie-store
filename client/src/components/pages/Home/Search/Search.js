@@ -1,10 +1,22 @@
-import React from 'react'
+import React from 'react';
+import './Search.css';
 
-function Search() {
+function Search({updateSearchTerm, searchTerm}) {
+
+  const handleChange = event => {
+    updateSearchTerm(event.target.value)
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+
   return (
     <div>
-      <input type="text" placeholder="title"  />  
-      {/* value={searchTerm} onChange={handleChange} onKeyDown={handleKeyDown}     */}
+      <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="title" className="search" value={searchTerm} onChange={handleChange}  />
+      </form>        
     </div>
   )
 }
