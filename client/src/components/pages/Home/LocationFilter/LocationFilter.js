@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
 
 function LocationFilter({updateLocation}) {
 
@@ -21,14 +21,12 @@ function LocationFilter({updateLocation}) {
   }
 
   return (
-    <div className="col-location">
-      <select name="selectlocation" onChange={handleChange}>
-        <option key='any' value='any'>Any</option>
-        {allLocations.map(location => (
-            <option key={location} value={location}>{location}</option>  
-          ))}      
-      </select>      
-    </div>
+    <select className='select-custom' name="selectlocation" onChange={handleChange}>
+      <option key='any' value='any'>Any</option>
+      {allLocations.map(location => (
+          <option key={location} value={location}>{location}</option>  
+        ))}      
+    </select>      
   )
 }
 

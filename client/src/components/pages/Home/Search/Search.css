@@ -1,5 +1,5 @@
 .search {
-  width: 50%;
+  width: 100%;
   padding: 12px 24px;
   background-color: transparent;
   font-size: 22px;
@@ -8,9 +8,7 @@
   border: 1px solid transparent;
   border-bottom: 1px solid #575756;
   border-radius: 0;
-  background-position: 100% center;
   color: rgba(0,0,0,.87);
-  display: flex;
 }
 .btn-search {
   background-color: #575756;

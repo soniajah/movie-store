@@ -21,14 +21,12 @@ function LanguageFilter({updateLanguage}) {
   }
 
   return (
-    <div className="col-language">
-      <select name="selectLanguage" onChange={handleChange}>
-        <option key='any' value='any'>Any</option>
-        {allLanguages.map(language => (
-            <option key={language} value={language}>{language}</option>  
-          ))}      
-      </select>      
-    </div>
+    <select className='select-custom' name="selectLanguage" onChange={handleChange}>
+      <option key='any' value='any'>Any</option>
+      {allLanguages.map(language => (
+          <option key={language} value={language}>{language}</option>  
+        ))}      
+    </select>      
   )
 }
 

@@ -30,6 +30,10 @@ function Movie() {
       <Table striped bordered hover>  
         <tbody>
           <tr>
+            <td>IMDB Rating</td>
+            <td>{movie.imbdRating} </td>         
+          </tr>
+          <tr>
             <td>Language</td>
             <td>{movie.language} </td>         
           </tr>

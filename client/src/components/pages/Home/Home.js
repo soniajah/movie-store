@@ -3,9 +3,10 @@ import LanguageFilter from './LanguageFilter/LanguageFilter'
 import LocationFilter from './LocationFilter/LocationFilter'
 import MovieList from './MovieList/MovieList';
 import Search from './Search/Search';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import './Home.css';
+import { BiFilterAlt } from "react-icons/bi";
+import { MdLanguage } from "react-icons/md";
+import { GoLocation } from "react-icons/go";
 
 function Home() {
   const [searchResults, setSearchResults] = useState([]);
@@ -55,27 +56,27 @@ function Home() {
 
   return (       
       <>
-        <Container>
-          <Row>
-            <Col><Search updateSearchTerm={updateSearchTerm} searchTerm={searchTerm} /></Col>
-          </Row>          
-          <Row className='pt-4'>
-            <Col xs lg="2">
-              <Row>
-                <Col>Filters</Col>            
-              </Row>
-              <Row>
-                <Col>Language</Col>
-                <Col><LanguageFilter updateLanguage={updateLanguage} /></Col>
-              </Row>
-              <Row>
-                <Col>Location</Col>
-                <Col><LocationFilter updateLocation={updateLocation} /></Col>
-              </Row>
-            </Col>
-            <Col><MovieList movies={searchResults}/></Col>
-          </Row>      
-        </Container>
+      <div className="container">
+      <Search updateSearchTerm={updateSearchTerm} searchTerm={searchTerm} />
+        <div className='row pt-4'>
+          <div className='col-2'>
+            <h5 className='pb-2'><BiFilterAlt /> Filters</h5>
+            <div className='row pb-3'>
+              <div className='col p-0 m-0'>
+              <MdLanguage /> <LanguageFilter updateLanguage={updateLanguage} />
+              </div>                         
+            </div>
+            <div className='row pb-3'>
+              <div className='col p-0 m-0'>
+                <GoLocation/><LocationFilter updateLocation={updateLocation} />
+              </div> 
+            </div>
+          </div>
+          <div className='col'>
+            <MovieList movies={searchResults}/>
+          </div>
+        </div>
+      </div>  
     </>          
   )
 }
