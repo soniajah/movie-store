@@ -1,13 +1,12 @@
-.list-icon {
-  max-width: 100px;
-  max-height: 100px;
-}
-
 .container {
   background-color: #ffffff;
   min-height: 100vh;
   padding-bottom: 10px;
   margin-bottom: 10px;
+}
+
+.page-title {
+  text-align: center;
 }
 
 .select-custom {
@@ -24,3 +23,16 @@
   border-bottom-color: grey;
 }
 
+.list-icon {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.still-image {
+  width: 200px;
+  height: 300px;
+}
+.poster {
+  max-width: 400px;
+  max-height: 500px;
+}
