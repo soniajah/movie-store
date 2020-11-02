@@ -14,9 +14,12 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [language, setLanguage] = useState("any");
   const [location, setLocation] = useState("any");
+  const [bookings, setBookings] = useState([]);
+  const userId = "5f99e2104de9ec5ef4f483ad";
   
   useEffect(() => {
     getMovies();
+    getBookingsOfAUser();
 
   }, [language, location])
  
@@ -26,6 +29,47 @@ function Home() {
     .then(res => {
       setMovies(res)
       filterMoviesFromSearchTerm(searchTerm, res)
+    })
+  }
+
+  const getBookingsOfAUser = () => {    
+    fetch(`http://localhost:5000/booking/userid/${userId}`)
+    .then(res => res.json())
+    .then(res => {
+      setBookings(res)
+    })
+  }
+
+  const createABookingforAUser = (movieId) => {   
+    console.log(userId, movieId) 
+    fetch("http://localhost:5000/booking/create",{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      mode: 'cors',
+      body: JSON.stringify({userId: userId, movieId: movieId})
+    })
+    .then(res => {
+      var newBookings = [...bookings, movieId]
+      setBookings(newBookings)
+    })   
+  }
+
+  const deleteABookingforAUser = (movieId) => {    
+    console.log(userId, movieId)
+    fetch("http://localhost:5000/booking/delete",{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      mode: 'cors',
+      body: JSON.stringify({userId: userId, movieId: movieId})
+    })
+    .then(res => res.json())
+    .then(res => {
+      var newBookings = [...bookings]
+      var index = newBookings.indexOf(movieId);
+      if (index !== -1) {
+        newBookings.splice(index, 1);
+      }
+      setBookings(newBookings)
     })
   }
 
@@ -73,7 +117,7 @@ function Home() {
             </div>
           </div>
           <div className='col'>
-            <MovieList movies={searchResults}/>
+            <MovieList movies={searchResults} bookings={bookings} deleteABookingforAUser={deleteABookingforAUser} createABookingforAUser={createABookingforAUser} />
           </div>
         </div>
       </div>  

@@ -3,7 +3,7 @@ const request = require('supertest')
 describe('Bookings Test', () => {
   beforeAll((done) => {
     models = require('../models')
-    const moviesForTest = require('./movies.json')
+    const moviesForTest = require('./movies.json')   
     models.db.movie.remove({}, (err, result) => {
       createMovies(moviesForTest)
     })
@@ -59,10 +59,21 @@ describe('Bookings Test', () => {
       })    
   })
 
+  it('get all bookings of a user', (done) => {       
+    models.db.user.find({}).then((users, err) => {
+      models.db.booking.find({userId: users[0]._id}).then(async (bookings, err) => {    
+        const res = await request(app).get(`/booking/userid/${users[0]._id}`)
+        .send()
+        expect(res.body.length).toBe(1);
+        done()
+      }) 
+    })       
+  })
+
   it('deletes a booking of a movie made by a user', (done) => {  
     models.db.booking.find({}).then( async (booking, err) => {
       const res = await request(app).post('/booking/delete/')
-      .send({bookingId: booking[0]._id})      
+      .send({userId: booking[0].userId, movieId: booking[0].movieId})      
       expect(res.body.deletedCount).toBe(1);
       done()
     })
