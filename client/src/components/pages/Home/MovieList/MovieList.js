@@ -1,23 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-function MovieList() {
-  const [movies, setMovies] = useState([])
-
-  useEffect(() => {
-    getMovies();
-    console.log(movies)  
-  }, [])
- 
-  const getMovies = () => {
-    fetch('http://localhost:5000/movies/location/any/language/any')
-    .then(res => res.json())
-    .then(res => {
-      console.log(res)
-      setMovies(res)
-    })
-  }
-
+function MovieList({movies}) {
   return (
     <div>  
       {movies.length ? (

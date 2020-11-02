@@ -13,7 +13,7 @@ function Movie() {
   }, [])
 
   const getMovie = () => {
-    fetch(`http://localhost:5000/movie/get/${movieId}`)
+    fetch(`http://localhost:5000/movies/id/${movieId}`)
     .then(res => res.json())
     .then(res => {
       console.log(res)
