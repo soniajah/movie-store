@@ -1,5 +1,6 @@
 var models = require('../models')
 var mongoose = require('mongoose')
+var helpers = require('../helpers')
 
 exports.filter = (req, res) => {
   var query = {}
@@ -10,9 +11,10 @@ exports.filter = (req, res) => {
     query.language = req.params.language
   }
   models.db.movie.find(query)
-  .then((result, err) => {
+  .then((movies, err) => {
     if(err) console.log(err)
-    res.send(result)
+    var sortedMovies = helpers.sortMoviesByTitle(movies)
+    res.send(sortedMovies)
   })  
 }
 
