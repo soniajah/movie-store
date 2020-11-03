@@ -7,6 +7,7 @@ import './Home.css';
 import { BiFilterAlt } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
+import Navbar from '../../Navbar/Navbar';
 
 function Home() {
   const [searchResults, setSearchResults] = useState([]);
