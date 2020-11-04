@@ -12,8 +12,8 @@ It contains:
 - Navigation (logo clickable takes to homepage)
 - Home page (shows a list of movies for a specific user, a search bar for movies by title, filter by language, filter by location, book/unbook a movie. The image and the title are clickable)
 - Movie details page
-- Login page (under construction)
-- Sign Up page (pending)
+- Login page 
+- Sign Up page (wip)
 
 # Database: MonggoDB, Mongoose
 
