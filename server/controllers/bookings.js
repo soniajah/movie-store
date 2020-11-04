@@ -1,14 +1,17 @@
 var models = require('../models')
+var mongoose = require('mongoose')
 
 exports.create = (req, res) => {
   var booking = {}
-  booking.userId = req.body.userId
-  booking.movieId = req.body.movieId
+  booking.userId = mongoose.Types.ObjectId(req.body.userId)
+  booking.movieId = mongoose.Types.ObjectId(req.body.movieId)
   booking.date = new Date()
-  models.db.booking.find({userId: req.body.userId, movieId: req.body.movieId}, (err, result) => {
+  console.log(booking)
+  models.db.booking.find({userId: booking.userId, movieId: booking.movieId}, (err, result) => {
+    console.log(result)
     if(err) console.log(err)
     if(result && result.length > 0) {
-      res.send(409)
+      res.sendStatus(409)
     }
     else {
       new models.db.booking(booking).save((err, result) => {
@@ -16,7 +19,6 @@ exports.create = (req, res) => {
         res.send(result)
       });
     }
-
   })    
 }
 
@@ -42,9 +44,11 @@ exports.search = (req, res) => {
 }
 
 exports.getUserBookings = (req, res) => {
-  models.db.booking.find({userId: req.params.userid}, (err, result) => {
+  console.log(req.params)
+  models.db.booking.find({userId: mongoose.Types.ObjectId(req.params.userid)}, (err, result) => {
     if(err) console.log(err)
     var ArrayOfBookedMovieIds = result.map((booking) => {return booking.movieId})
+    console.log(ArrayOfBookedMovieIds)
     res.send(ArrayOfBookedMovieIds)
   }) 
 }

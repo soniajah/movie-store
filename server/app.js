@@ -31,6 +31,7 @@ app.get('/movies/locations', controllers.movies.locations);
 app.get('/movies/languages', controllers.movies.languages);
 
 app.post('/users/create', controllers.users.create);
+app.get('/user/random', controllers.users.random);
 
 app.post('/booking/create', controllers.bookings.create);
 app.post('/booking/delete', controllers.bookings.delete);

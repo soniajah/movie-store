@@ -7,7 +7,6 @@ exports.auth = (req, res) => {
 	if (name && password) {
     models.db.user.find({name: name, password: password}, (err, results) => {  
       if(err) console.log(err)
-      console.log(results)  
 			if (results.length > 0) {
 				req.session.loggedin = true;
         req.session.user = {name: results[0].name, id: results[0]._id}
@@ -16,7 +15,7 @@ exports.auth = (req, res) => {
       else {
 				res.send('Incorrect name and/or Password!');
 			}			
-			res.end();
+			// res.end();
 		})
 	} else {
 		res.send('Please enter name and Password!');
