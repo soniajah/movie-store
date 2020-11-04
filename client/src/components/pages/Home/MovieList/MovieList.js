@@ -4,6 +4,7 @@ import { IoMdStar } from "react-icons/io";
 import {BsToggleOff, BsToggleOn } from "react-icons/bs";
 
 function MovieList({movies, bookings, deleteABookingforAUser, createABookingforAUser}) {
+  console.log(bookings)
 
   const handleCreate = event => {
     createABookingforAUser(event.target.id)

@@ -6,10 +6,10 @@ import './Login.css'
 
 
 
-function Login() {
+function Login({updateUser}) {
   return (
     <div className="login-form">
-      <LoginForm />    
+      <LoginForm updateUser={updateUser} />    
       {/* <Link to={'/sign-up'} className='sign-up-link'>
           Sign Up
       </Link>   */}

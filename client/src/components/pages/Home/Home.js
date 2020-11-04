@@ -9,14 +9,13 @@ import { MdLanguage } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
 import Navbar from '../../Navbar/Navbar';
 
-function Home() {
+function Home({userId}) {
   const [searchResults, setSearchResults] = useState([]);
   const [movies, setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
   const [language, setLanguage] = useState("any");
   const [location, setLocation] = useState("any");
   const [bookings, setBookings] = useState([]);
-  const userId = "5f99e2104de9ec5ef4f483ad";
   
   useEffect(() => {
     getMovies();
@@ -24,6 +23,7 @@ function Home() {
 
   }, [language, location])
  
+
   const getMovies = () => {
     fetch(`http://localhost:5000/movies/location/${location}/language/${language}`)
     .then(res => res.json())
@@ -37,7 +37,10 @@ function Home() {
     fetch(`http://localhost:5000/booking/userid/${userId}`)
     .then(res => res.json())
     .then(res => {
+      console.log("user bookings")
+      console.log(res)
       setBookings(res)
+      console.log(bookings)
     })
   }
 

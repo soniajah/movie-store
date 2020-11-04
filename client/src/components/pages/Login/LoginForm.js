@@ -3,10 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Home from '../Home/Home';
 import { Redirect } from 'react-router';
+import { useHistory } from "react-router-dom";
 
 
 function LoginForm() {
-
   const [user, setUser] = useState([]) 
 
   const handleChange = e => {
@@ -28,42 +28,17 @@ function LoginForm() {
     .then(res => {
       console.log(res)
       if(res.loggedin == true) {
-        // delete user['password']
-        setUser({name: res.name, userId: res.id})        
+        setUser({name: res.name, userId: res.id})     
+        // updateUser({name: res.name, userId: res.id})   
         console.log(user)      
-        // return (<Home user={{name: res.name, userId: res.id}} />)
-        return <Redirect to="/home" />
+        window.location += "home"
+        // return <Redirect to="/home" />
       }
       else {
         alert(res)
       }
     })       
   }
-  
-  // const getUser = () => {
-  //   fetch("http://localhost:5000/user/get/" + userId )
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     setUser(res)
-  //   })    
-  // };
-
-  // useEffect(() => {
-  //   getUser()
-  //  }, [])
-
-  // const updateUser = () => {
-  //   fetch("http://localhost:5000/user/update",{
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     mode: 'cors',
-  //     body: JSON.stringify(user)
-  //   })
-  //   .then(res => {
-  //     console.log(res)
-  //     alert(res.text())
-  //   })
-  // };
 
   return (
     <div className="login-form">
