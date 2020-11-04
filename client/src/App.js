@@ -17,7 +17,7 @@ function App() {
   return (
     <div>      
       <Router>
-        {/* <Navbar /> */}
+        <Navbar />
         <Switch>
           {/* <Route path="/sign-up" component={SignUp} /> */}
           {/* <Route exact path="/" component={() => <Login updateUser={updateUser}/>}/> */}
