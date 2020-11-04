@@ -20,9 +20,7 @@ function App() {
         <Navbar />
         <Switch>
           {/* <Route path="/sign-up" component={SignUp} /> */}
-          {/* <Route exact path="/" component={() => <Login updateUser={updateUser}/>}/> */}
-          {/* <Route path="/home" component={() => <Home userId={user.userId}/>}/> */}
-          <Route exact path="/" component={Login}/>
+          {/* <Route exact path="/" component={Login}/> */}
           <Route path="/home" component={Home}/>
           <Route path="/movie" component={Movie} />
           <Redirect from="*" to={"/home"} />
