@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Login({isLoggedIn, user, handleChange, handleSubmit}) {
   return (
@@ -17,9 +17,9 @@ function Login({isLoggedIn, user, handleChange, handleSubmit}) {
         </label>
         <input type="submit" value="Submit" />
       </form>           
-      <Link to={'/sign-up'} className='sign-up-link'>
+      {/* <Link to={'/sign-up'} className='sign-up-link'>
           Sign Up
-      </Link>  
+      </Link>   */}
     </div>
   )
 }

@@ -8,10 +8,7 @@ import { BiFilterAlt } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
 
-function Home({isLoggedIn, user, setUser}) {
-  // setUser({name: res.name, userId: res.id})
-
-  console.log(isLoggedIn, user.name, user.userId)
+function Home({user}) {
   const [searchResults, setSearchResults] = useState([]);
   const [movies, setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,10 +18,12 @@ function Home({isLoggedIn, user, setUser}) {
   
   useEffect(() => {
     getMovies();
+  }, [language, location])
+
+  useEffect(() => {
     getBookingsOfAUser();
 
-  }, [language, location])
- 
+  }, [user.userId])
 
   const getMovies = () => {
     fetch(`http://localhost:5000/movies/location/${location}/language/${language}`)

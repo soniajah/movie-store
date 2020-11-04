@@ -1,8 +1,20 @@
 .nav-bar {
   background-color: black;
   padding: 0px;
+  height: 80px;
 }
 
 .nav-link {
   color: white;
+}
+
+.nav-bar-user {
+  color: white;
+  float: right;
+  padding-right: 3%;
+}
+
+.nav-bar-container {
+  float: left;
+  width: 30%;
 }

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../Login/Login.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 function SignUp({isLoggedIn, user, handleChange, handleSubmit}) {  

@@ -4,7 +4,6 @@ import { IoMdStar } from "react-icons/io";
 import {BsToggleOff, BsToggleOn } from "react-icons/bs";
 
 function MovieList({movies, bookings, deleteABookingforAUser, createABookingforAUser}) {
-  console.log(bookings)
 
   const handleCreate = event => {
     createABookingforAUser(event.target.id)
@@ -22,29 +21,13 @@ function MovieList({movies, bookings, deleteABookingforAUser, createABookingforA
               return(
                 <div className='row pb-1' key={index}>  
                   <div className='col-2'>
-                    <Link to={{
-                      pathname: '/movie/' + movie._id,
-                      query: {
-                        movie: movie,
-                        bookings:bookings, 
-                        deleteABookingforAUser: deleteABookingforAUser, 
-                        createABookingforAUser: createABookingforAUser
-                      }
-                    }}>                    
+                    <Link to={'/movie/' + movie._id}>                    
                       <img src={movie.poster} className="poster" className='list-icon' />
                     </Link>
                   </div>  
                   <div className='col-8'>
                     <span>
-                      <Link to={{
-                        pathname: '/movie/' + movie._id,
-                        query: {
-                          movie: movie,
-                          bookings:bookings, 
-                          deleteABookingforAUser: deleteABookingforAUser, 
-                          createABookingforAUser: createABookingforAUser
-                        }
-                      }}>
+                      <Link to={'/movie/' + movie._id}>
                         {movie.title}
                       </Link>
                     </span>

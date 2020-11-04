@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/pages/Home/Home';
 import Login from './components/pages/Login/Login';
@@ -10,21 +10,7 @@ import { Redirect } from 'react-router';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-
-  useEffect(() => {
-    updateLoggin()    
-  }, [isLoggedIn])
-
-  const updateLoggin = () => {
-    // setIsLoggedIn(value)
-    console.log(isLoggedIn)
-  }
-
-  const updateUser = (name, id) => {
-    setUser({name: name, userId: id})
-    console.log(user)
-  }
-
+ 
   const handleChange = e => {
     const value = e.target.value 
     var name = e.target.name
@@ -33,7 +19,6 @@ function App() {
 
   const handleSubmit = e => {
     e.preventDefault(); 
-    console.log(user)   
     fetch("http://localhost:5000/auth",{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -42,16 +27,11 @@ function App() {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res)
       if(res.loggedin == true) {
         setIsLoggedIn(true)
         setUser({name: res.name, userId: res.id})
-        console.log(user)      
         return <Redirect to="/home" />
-      }
-      else {
-        alert(res)
-      }
+      }      
     })       
   }
 
@@ -60,13 +40,13 @@ function App() {
       {isLoggedIn ? (
         <>
           <Router>
-            <Navbar />
+            <Navbar isLoggedIn={isLoggedIn} name={user.name}  setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
             <Switch>
             <Route path="/home">
-              <Home isLoggedIn={isLoggedIn} user={user} updateUser={updateUser} />
+              <Home user={user} />
             </Route>
             <Route path="/movie">
-              <Movie isLoggedIn={isLoggedIn} user={user} />
+              <Movie user={user} />
             </Route>
             <Redirect from="/" to="/home" />
             </Switch>                
@@ -86,8 +66,7 @@ function App() {
             </Switch>                
           </Router>           
         </>
-      )    
-      }
+      )}
     </div>
   );
 }
