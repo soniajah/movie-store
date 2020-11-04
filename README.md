@@ -136,4 +136,4 @@ Go to http://localhost:3000
 # Instructions for Unit Test
 - cd server
 - npm i or npm install
-- npm start
+- npm test
