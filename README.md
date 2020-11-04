@@ -1,4 +1,4 @@
-# movie-store
+# Movie-store
 react nodejs project for movie search and booking by user.
 
 # Tech stack
@@ -12,7 +12,8 @@ It contains:
 - Navigation (logo clickable takes to homepage)
 - Home page (shows a list of movies for a specific user, a search bar for movies by title, filter by language, filter by location, book/unbook a movie. The image and the title are clickable)
 - Movie details page
-- Login page under construction
+- Login page (under construction)
+- Sign Up page (pending)
 
 # Database: MonggoDB, Mongoose
 
@@ -132,7 +133,7 @@ It contains:
 
 Go to http://localhost:3000
 
-# Instructions for test
+# Instructions for Unit Test
 - cd server
 - npm i or npm install
 - npm start
