@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    // required: [true, 'Created date is required']
+    required: [true, 'Created date is required']
   }
 })
 
