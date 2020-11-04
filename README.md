@@ -1,5 +1,5 @@
 # Movie-store
-react nodejs project for movie search and booking by user.
+A full-stack simple application for movie database built with react and Node.js. It's a project for movie search and movie booking by user.
 
 # Tech stack
 - Javascript language
