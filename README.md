@@ -114,7 +114,7 @@ It contains:
 
 # Notes
 - The server/app.js calls the function "controllers.home.initialize()" that initializes the process of creating a user and a list of movies. It runs automatically when the server runs. The user and the movies that are migrated to the DB can be found in sever/data folder.
-- A user can create and delete a booking that can be checked in DB now (the rendering of it is under construction) 
+- A user can create and delete a booking. 
 
 
 # Instructions to run
@@ -133,6 +133,6 @@ It contains:
 
 Go to http://localhost:3000
 
-# Instructions for Unit Test
+# Instructions for Backend Unit Test with Jest
 - cd server
 - npm test
