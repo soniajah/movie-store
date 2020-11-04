@@ -7,9 +7,11 @@ import './Home.css';
 import { BiFilterAlt } from "react-icons/bi";
 import { MdLanguage } from "react-icons/md";
 import { GoLocation } from "react-icons/go";
-import Navbar from '../../Navbar/Navbar';
 
-function Home({userId}) {
+function Home({isLoggedIn, user, setUser}) {
+  // setUser({name: res.name, userId: res.id})
+
+  console.log(isLoggedIn, user.name, user.userId)
   const [searchResults, setSearchResults] = useState([]);
   const [movies, setMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,8 +35,9 @@ function Home({userId}) {
     })
   }
 
-  const getBookingsOfAUser = () => {    
-    fetch(`http://localhost:5000/booking/userid/${userId}`)
+  const getBookingsOfAUser = () => { 
+    console.log(user.userId)   
+    fetch(`http://localhost:5000/booking/userid/${user.userId}`)
     .then(res => res.json())
     .then(res => {
       console.log("user bookings")
@@ -45,12 +48,12 @@ function Home({userId}) {
   }
 
   const createABookingforAUser = (movieId) => {   
-    console.log(userId, movieId) 
+    console.log(user.userId, movieId) 
     fetch("http://localhost:5000/booking/create",{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       mode: 'cors',
-      body: JSON.stringify({userId: userId, movieId: movieId})
+      body: JSON.stringify({userId: user.userId, movieId: movieId})
     })
     .then(res => {
       var newBookings = [...bookings, movieId]
@@ -59,12 +62,12 @@ function Home({userId}) {
   }
 
   const deleteABookingforAUser = (movieId) => {    
-    console.log(userId, movieId)
+    console.log(user.userId, movieId)
     fetch("http://localhost:5000/booking/delete",{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       mode: 'cors',
-      body: JSON.stringify({userId: userId, movieId: movieId})
+      body: JSON.stringify({userId: user.userId, movieId: movieId})
     })
     .then(res => res.json())
     .then(res => {
@@ -105,7 +108,7 @@ function Home({userId}) {
   return (       
       <>
       <div className="container">
-      <Search updateSearchTerm={updateSearchTerm} searchTerm={searchTerm} />
+        <Search updateSearchTerm={updateSearchTerm} searchTerm={searchTerm} />
         <div className='row pt-4'>
           <div className='col-2'>
             <h5 className='pb-2'><BiFilterAlt /> Filters</h5>

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Still from './Still';
 import TableContent from './TableContent.js';
 
-function Movie() {
+function Movie({isLoggedIn, user}) {
   const [movie, setMovie] = useState({})
   const movieId = window.location.pathname.split("/")[2]
 
