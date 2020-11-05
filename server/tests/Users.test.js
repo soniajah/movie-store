@@ -26,7 +26,7 @@ describe('Users Test', () => {
     const user = {
       name: "user-test"
     };
-    const res = await request(app).post('/users/create')
+    const res = await request(app).post('/user/create')
     .send(user)
     models.db.user.find({}).then((result, err) => {
       expect(res.body.name).toBe( 'user-test');

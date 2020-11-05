@@ -30,7 +30,7 @@ app.get('/movies/id/:id', controllers.movies.get);
 app.get('/movies/locations', controllers.movies.locations);
 app.get('/movies/languages', controllers.movies.languages);
 
-app.post('/users/create', controllers.users.create);
+app.post('/user/create', controllers.users.create);
 app.get('/user/random', controllers.users.random);
 
 app.post('/booking/create', controllers.bookings.create);

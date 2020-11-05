@@ -6,6 +6,7 @@ exports.create = (req, res) => {
   user.password = req.body.password
   new models.db.user(user).save((err, result) => {
     if(err) console.log(err)
+    console.log(result)
     res.send(result)
   })  
 }
