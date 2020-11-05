@@ -9,11 +9,13 @@ A full-stack simple application for movie database built with react and Node.js.
 
 # Description
 It contains:
+- Sign Up page 
+- Login page 
 - Navigation (logo clickable takes to homepage)
 - Home page (shows a list of movies for a specific user, a search bar for movies by title, filter by language, filter by location, book/unbook a movie. The image and the title are clickable)
 - Movie details page
-- Login page 
-- Sign Up page (wip)
+
+
 
 # Database: MonggoDB, Mongoose
 
