@@ -10,16 +10,24 @@ import { Redirect } from 'react-router';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
- 
-  const handleChange = e => {
+  const [tempUser, setTempUser] = useState({});
+
+  
+  const handleLoginChange = e => {
     const value = e.target.value 
     var name = e.target.name
     setUser({...user, [name]: value});
   }  
 
-  const handleSubmit = e => {
+  const handleSingUpChange = e => {
+    const value = e.target.value 
+    var name = e.target.name
+    setTempUser({...tempUser, [name]: value});
+  }
+
+  const handleLogin = e => {
     e.preventDefault(); 
-    fetch("http://localhost:5000/auth",{
+    fetch("http://localhost:5000/auth", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       mode: 'cors',
@@ -31,6 +39,29 @@ function App() {
         setIsLoggedIn(true)
         setUser({name: res.name, userId: res.id})
         return <Redirect to="/home" />
+      }      
+    })       
+  }
+
+  const handleSingUp = e => {    
+    e.preventDefault(); 
+    fetch("http://localhost:5000/user/create", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      mode: 'cors',
+      body: JSON.stringify(tempUser)
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      if(res.name == tempUser.name && res.password == tempUser.password) {
+        alert('Congratulations!!! You are a member of TMDB now!')
+        setTempUser({name: "", password: ""})
+        window.location = "/"
+      }
+      else {
+        alert('Something went wrong. Please try again')
+        setTempUser({name: "", password: ""})
       }      
     })       
   }
@@ -56,13 +87,14 @@ function App() {
         <>
           <Router>
             <Switch> 
-              <Route path="/">
-                <Login isLoggedIn={isLoggedIn} user={user} handleChange={handleChange} handleSubmit={handleSubmit} />
+              <Route exact path="/">
+                <Login user={user} handleLoginChange={handleLoginChange} handleLogin={handleLogin} />
               </Route>
-              <Route path="/sign-up">
-                <SignUp isLoggedIn={isLoggedIn} user={user} handleChange={handleChange} handleSubmit={handleSubmit} />
+              <Route exact path="/sign-up">
+                <SignUp user={tempUser} handleSingUpChange={handleSingUpChange} handleSingUp={handleSingUp} />
               </Route>
-              <Redirect from="/sign-up" to="/" />             
+              <Redirect from="/sign-up" to="/" />
+              <Redirect to="/" />
             </Switch>                
           </Router>           
         </>
